@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>replaceState的使用</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+ <body>
+    <div id="message" align="center"></div>
+
+    <script type="text/babel">
+			var GetCount = React.createClass({
+				getInitialState: function(){
+					return{
+						count : 0
+				}
+			},
+				clickChange : function(){
+					this.replaceState({count: Math.round(Math.random()*10)});
+			},
+				render: function(){
+					return(
+						<h3 onClick={this.clickChange}>点击我，出现随机数字为:{this.state.count}</h3>
+					)
+			}
+		});
+
+		ReactDOM.render(
+			<GetCount />,
+			document.getElementById('message')
+		);
+	</script>	
+</body>
+</html>

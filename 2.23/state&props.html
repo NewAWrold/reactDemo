@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+		<script type="text/babel">
+
+			var Father = React.createClass({
+				getInitialState: function(){
+					return {
+						name : 'the most beautiful girl',
+						link : 'http://www.beautifulGirl.com'
+				}
+			},
+				render: function(){
+					return (
+						<div>
+							<Name name={this.state.name}/>
+							<Link link={this.state.link}/>
+						</div>
+					);
+			}
+		});
+
+	var Name = React.createClass({
+		render: function(){
+			return <h3>{this.props.name}</h3>
+	}
+});
+
+	var Link = React.createClass({
+		render: function(){
+			return(
+				<a href={this.props.link}>{this.props.link}</a>
+			)
+	}
+});
+
+ReactDOM.render(
+	<Father/>,
+	document.getElementById('example')
+);
+
+</script>
+</body>
+</html>
