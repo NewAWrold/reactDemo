@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">	
+		function Test1(){
+			return <div style={{color:'red'}}>我只想做个好人</div>
+	}
+		function Test2(){
+			return <h1 style={{backgroundColor:'blue'}}>算了吧，好可怕</h1>
+	}
+		function Children(props){
+			return (
+				<div>
+					<div>
+						 {props.left}
+					</div>
+					<div>
+						{props.right}
+					</div>
+				</div>
+			)
+	};
+	function Father(){
+		return (
+			<Children left={<Test1 />}  right={<Test2/>}/>
+		)
+}
+ReactDOM.render(
+	<Father />,
+	document.body
+)
+	</script>
+</body>
+</html>

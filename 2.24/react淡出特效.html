@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>react淡入淡出小demo</title>
+  <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+  </head>
+<body>
+    <div id="example"></div>
+		<script type="text/babel">
+				var Hello = React.createClass({
+					getInitialState: function(){
+						return {
+							opacity : 1
+					}
+				},
+					componentDidMount: function(){
+					{/*componentDidMount这个生命周期方法在初始化渲染结束后调用 */}
+						var timer = setInterval(()=>{
+							var opacity = this.state.opacity;
+							opacity -= .05;
+							if(opacity < 0.1){
+								opacity = 1;
+						}
+						this.setState({opacity:opacity})
+					},100)
+				},
+					render: function(){
+						return(
+							<div>
+								<h1 style={{opacity:this.state.opacity}}>hello {this.props.message}</h1>
+							</div>
+						)
+				}
+			});
+			
+			ReactDOM.render(
+				<Hello message='world'/>,
+				document.getElementById('example')
+			);
+		</script>
+</body>
+</html>

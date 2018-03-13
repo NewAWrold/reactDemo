@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+<!-- 	<script type="text/babel">
+		const numbers = [1,2,3,4,5];
+		const numList = numbers.map(id=>
+			<li>{id * 2 }</li>
+		);
+
+		ReactDOM.render(
+			<ul>{numList}</ul>,
+			document.getElementById('example')
+		)
+	</script> -->
+	<script type="text/babel">
+		 function NumberList(props){
+			let numbers = props.numbers;
+			let numberList = numbers.map(number=>
+				<li key={number}>{number}</li>
+			);
+			return (
+			<ul>{numberList}</ul>
+			)
+		}
+
+		const numbers = [1,2,3,4,5];
+		ReactDOM.render(
+			<NumberList numbers = {numbers}/>,
+			document.getElementById('example')
+		)
+	</script>
+</body>
+</html>

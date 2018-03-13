@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<!-- 这样就实现了通过一个值来控制他组件的现实和隐藏  好比如vue中的v-if	 -->
+	<div id="example"></div>
+	<script type="text/babel">
+		function UserLoggin(props){
+			return <h1>Welcome back!</h1>;
+	};
+		function GuestLoggin(props){
+			return <h1>Please loggin!</h1>;
+	};
+		function Loggin(props){
+			const info = props.info;
+			if(info){
+				return <UserLoggin />
+			}else{
+				return <GuestLoggin />
+		}
+	}
+	ReactDOM.render(
+		<Loggin info={true} />,
+		document.body
+	);
+	</script>
+</body>
+</html>

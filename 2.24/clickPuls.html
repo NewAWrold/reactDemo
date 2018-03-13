@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击plus plus and plus</title>
+ 	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+		<script type="text/babel">
+			var Button = React.createClass({
+				getInitialState: function(){
+					return {
+						data : 0
+				}
+			},
+				clickPlus: function(){
+					this.setState({data:this.state.data+1})
+			},
+				render: function(){
+					return (
+						<div style={{margin:'0 auto'}}>
+							<button onClick={this.clickPlus} style={{color:'red'}}>click me</button>
+							<Msg message={this.state.data} />
+						</div>
+				)
+			}
+		});
+		var Msg = React.createClass({
+			componentWillMount: function(){
+				console.log('组件将要挂载！');
+		},
+			componentDidMount: function(){
+				console.log('组件已经挂载!');
+		},
+			componentWillReceiveProps: function(){
+				console.log('组件已经接受到一个新的props')
+		},
+			shouldCompoentUpdata: function(){
+				return true;
+		},
+			componentWillUnmount:function() {
+        console.log('组件将要销毁!')
+  	},
+			render: function(){
+				return (
+					<p>{this.props.message}</p>
+			)
+		}
+	});
+
+		ReactDOM.render(<Button />,document.body)
+</script>
+</body>
+</html>

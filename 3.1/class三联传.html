@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">	
+		function Sunzi(props){
+			return (
+				<div style={{color:props.color}}>
+					{props.children}
+				</div>
+			)
+	};
+
+		function Son(props){
+			return (
+				<Sunzi color='pink'>
+					<h1>{props.title}</h1>
+					<p>{props.content}</p>
+					{props.children}
+				</Sunzi>
+			)
+	};
+
+		class Father extends React.Component{
+			constructor(props){
+				super(props);
+				this.state = {info : ''};
+				this.handleChange = this.handleChange.bind(this);
+				this.handleAlert = this.handleAlert.bind(this);
+		}
+			handleChange(e){
+				this.setState({info :e.target.value});
+		}
+			handleAlert(){
+				alert(`欢迎回来，我亲爱的 ${this.state.info}!`)
+		}
+			render(){
+				return(
+					<Son title='如果爱可以重来' content='那就让我改变一切'>
+						<input type="text" value={this.state.info} onChange={this.handleChange} />
+						<button onClick={this.handleAlert}>{this.state.info}</button>
+					</Son>
+				)
+		}
+	}
+	ReactDOM.render(
+		<Father />,
+		document.body
+	)
+	</script>
+</body>
+</html>

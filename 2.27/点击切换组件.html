@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type='text/babel'>
+		class LoginControl extends React.Component{
+			constructor(props) {
+				super(props);
+				this.state = {isLogin: false};
+				this.handleLoginClick = this.handleLoginClick.bind(this);
+				this.handleLogoutClick = this.handleLogoutClick.bind(this);
+			}
+
+			handleLoginClick() {
+				this.setState({isLogin: true})
+			}
+
+			handleLogoutClick() {
+				this.setState({isLogin: false})
+			}
+
+			render() {
+				const isLogin = this.state.isLogin;
+				let button = null;
+		    if (isLogin) {
+		      button = <LogoutButton onClick={this.handleLogoutClick} />;
+		    } else {
+		      button = <LoginButton onClick={this.handleLoginClick} />;
+		    }
+
+				return(
+					<div>
+							<Greeting isLogin = {isLogin}/>
+									{button}
+						</div>	
+					)
+			}
+		}
+
+		function UserLogin(props){
+			return <h1>Welcome back!</h1>
+		};
+
+		function GuestLogin(props){
+			return <h1>Please sign up.</h1>;
+		};
+		
+		function Greeting(props){
+			const isLogin = props.isLogin;
+			if(isLogin){
+				return <UserLogin/>;
+			}
+			return <GuestLogin />;
+		}
+		function LogoutButton(props){
+			return (
+				<button onClick ={props.onClick}>
+					login
+				</button>
+			)
+		}
+
+		function LoginButton(props){
+			return (
+				<button onClick ={props.onClick}>
+					logout
+				</button>
+			)
+		}
+
+		ReactDOM.render(
+  		<LoginControl />,
+  		document.getElementById('example')
+		);
+	</script>
+</body>
+</html>

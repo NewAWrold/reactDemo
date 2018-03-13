@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+<!-- 	<script type="text/babel">
+		function Welcome(props){
+			return <h1>Hello,{props.name}</h1>
+	}
+		const element = <Welcome name='sara'/>;
+		ReactDOM.render(
+			element,
+			document.getElementById('example')
+		);
+	</script> -->
+	<script type="text/babel">
+		function Welcome(props) {
+			return <h1>Hellow, {props.name}</h1>;
+	}
+		function App(){
+		return (
+			<div>
+				<Welcome name='zs'/>
+				<Welcome name='ls'/>
+				<Welcome name='wu'/>
+			</div>
+		);
+	}
+	ReactDOM.render(
+		<App />,
+		document.getElementById('example')
+	);
+	</script>
+</body>
+</html>

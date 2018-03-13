@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./tab.css">
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		{/* 首先写上面的显示的内容,用函数申明组件 */}
+			function Warning(props){
+				if(!props.showWarning){
+					return null;
+			}
+			return(
+				<div className='warning'>
+					Warning!
+				</div>
+			);
+		}
+
+
+		{/* 有状态组件，class申明 */}
+		class Page extends React.Component{
+			constructor(props){
+				super(props);
+				this.state = {showWarning: true}
+				this.handleToggleClick = this.handleToggleClick.bind(this);
+		}
+			handleToggleClick(){
+				this.setState(prevState=>({
+					showWarning: !prevState.showWarning
+			}));
+		}
+			render(){
+				return(
+					<div>
+						<Warning showWarning={this.state.showWarning}/>	
+						<button onClick={this.handleToggleClick}>{this.state.showWarning?'hide':'show'}</button>		
+					</div>
+				)
+		}
+	}
+
+	ReactDOM.render(
+		<Page />,
+		document.getElementById('example')
+	);
+	</script>
+</body>
+</html>

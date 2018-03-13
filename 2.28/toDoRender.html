@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+	class NumberList extends React.Component{
+		constructor(props){
+			super(props)
+			this.state = {number:[1,2,3,4,5]}
+	}
+
+		render(){
+			let number = this.state.number;
+			let list =number.map( (id)=>
+						<li key={id}>{id}</li>
+					)
+			return (
+				<ul>
+					{list}
+				</ul>
+			)
+	}
+}
+	ReactDOM.render(
+			<NumberList />,
+			document.getElementById('example')
+		)
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+		<script type="text/babel">
+			var Content = React.createClass({
+				render: function(){
+					return (
+						<div>
+							<input type="text" value={this.props.value} onChange={this.props.changeValue} />
+							<h3>{this.props.value}</h3>
+						</div>
+				)
+			}
+		});
+		var HelloMessage = React.createClass({
+			getInitialState: function(){
+					return {
+						value : 'Hello EveryBody!'
+				}
+			},
+			changeValue: function(e){
+				var value = this.state.value;
+				this.setState({value:e.target.value})
+			},
+			render: function(){
+				return (
+					<div>
+						<Content value={this.state.value} changeValue={this.changeValue}/>
+					</div>
+				)
+			}
+	})
+
+	ReactDOM.render(<HelloMessage />,document.body);
+</script>
+</body>
+</html>

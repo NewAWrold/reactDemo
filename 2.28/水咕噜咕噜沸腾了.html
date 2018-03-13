@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		function Boiling(props){
+			if(props.temp >=100){
+				return <p style={{color:'red'}}>The water would boil.</p>
+			}else{
+				return <p>The water would not boil.</p>;
+			}
+		};
+
+		class Father extends React.Component {
+			constructor(props){
+				super(props);
+				this.state = {temp : ''};
+				this.handleChange = this.handleChange.bind(this);
+			}
+
+			handleChange(e){
+				this.setState({temp: e.target.value})
+			}
+
+			render(){
+				const temp = this.state.temp;
+				return (
+					<div>
+						<input type="text" value={temp} onChange={this.handleChange} />
+						<Boiling temp={temp}/>
+					</div>
+				)
+			}
+		}
+
+	ReactDOM.render(
+		<Father />,
+		document.body
+	)
+	</script>
+</body>
+</html>

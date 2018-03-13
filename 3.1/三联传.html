@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">	
+		function Sunzi(props){
+			return (
+				<div style={{color:props.color}}>
+					{props.children}
+				</div>
+			)
+	};
+
+		function Son(props){
+			return (
+				<Sunzi color='red'>
+					<h1>
+						{props.h1}
+					</h1>
+					<p>
+						{props.ppp}
+					</p>
+				</Sunzi>
+			)
+	};
+
+		function Father(){
+			return (
+				<Son h1='Welcome' ppp = '欢迎回来。我的玖尼'/>
+			)
+	}
+	ReactDOM.render(
+		<Father />,
+		document.body
+	)
+	</script>
+</body>
+</html>

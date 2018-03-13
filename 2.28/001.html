@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+	function Blog(props){
+		const sidebar = (
+			<ul>
+				{props.posts.map((info)=>{
+					return (
+						<li key={info.id}>
+							{info.title}
+						</li>
+					)
+				})
+				}
+			</ul>
+		);
+		const content = props.posts.map(info=>{
+			return(
+				<div key={info.id}>
+					<h3>{info.title}</h3>
+					<p>{info.content}</p>
+				</div>
+			)
+		});
+		return (
+			<div>
+				{sidebar}
+				<hr/>
+				{content}
+			</div>
+		)
+	}
+	
+	const posts = [
+		{id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+  	{id: 2, title: 'Installation', content: 'You can install React from npm.'}
+	];
+	ReactDOM.render(
+		<Blog posts={posts}/>,
+		document.getElementById('example')
+	)	
+	</script>
+</body>
+</html>
