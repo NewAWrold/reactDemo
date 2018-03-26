@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var j = [1,2,3,4,5];
+		for (var i = 0; i < j.length; i++) {
+			
+		}
+		console.log(i);  // 5
+		// 此demo说明var的遍历变量泄露问题，在循环体外竟能拿到循环变量的值
+
+		let o = [1,2,3,4,5,6];
+
+		for (let k = 0; k < o.length; k++) {
+		}
+		console.log(k); //报错 k is not defined
+	</script>
+</body>
+</html>
